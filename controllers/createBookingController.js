@@ -7,7 +7,6 @@ const Booking = require("../models/bookingModel");
 
 
 exports.createBooking = async (req, res, next) => {
-  const day = req.body.day;
   const date = req.body.date;
   const location = req.body.location;
   const timeSlot = req.body.timeSlot;
@@ -16,7 +15,6 @@ exports.createBooking = async (req, res, next) => {
   // Check if the user has already booked the maximum number of time slots
   const existingUserBookings = await Booking.find({
     user: user,
-    day: day,
     date: date,
   });
 
@@ -27,7 +25,6 @@ exports.createBooking = async (req, res, next) => {
 
   // Check if the selected time slot is available
   const existingBookings = await Booking.find({
-    day: day,
     date: date,
     location: location,
     starttime: moment(timeSlot, 'h:mm a').toDate(),
@@ -40,7 +37,6 @@ exports.createBooking = async (req, res, next) => {
 
   const newBooking = new Booking({
     user: user,
-    day: day,
     date: date,
     location: location,
     starttime: moment(timeSlot, 'h:mm a').toDate(),

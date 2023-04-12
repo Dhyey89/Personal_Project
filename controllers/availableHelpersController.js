@@ -13,7 +13,6 @@ exports.getAvailableTimeSlots = async (req, res, next) => {
 
   // Check if there are any existing bookings for the current date and time slots
   const existingBookings = await Booking.find({
-    day: day,
     date: date,
     location: location,
     starttime: { $in: timeSlots.map(time => moment(time, "h:mm a").toDate()) },
@@ -22,7 +21,6 @@ exports.getAvailableTimeSlots = async (req, res, next) => {
   // Check if there are any existing bookings for the current date and time slots by the same user
   const existingUserBookings = await Booking.find({
     user: req.userId, // Exclude current user
-    day: day,
     date: date,
     location: location,
     starttime: { $in: timeSlots.map(time => moment(time, "h:mm a").toDate()) },
