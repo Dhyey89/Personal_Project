@@ -19,16 +19,16 @@ exports.forgotPassword = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'commutecare.noreply@gmail.com',
-        pass: 'tlvfjxrfdyxluiys'
+        user: 'assisttrack.noreply@gmail.com',
+        pass: 'cpsbgckwrpepbhbj'
       }
     });
 
     const mailOptions = {
-      from: 'commutecare.noreply@gmail.com',
+      from: 'assisttrack.noreply@gmail.com',
       to: email,
-      subject: 'CommuteCare - Password Reset',
-      text: `Hello from Commute Care,
+      subject: 'Assisttrack - Password Reset',
+      text: `Hello from Assisttrack,
 We have received a request to reset your password on Commutecare. To create a new password, please click on the link below:
       
 https://commutecare.vercel.app/newPassword?token=${token}

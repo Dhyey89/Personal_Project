@@ -34,12 +34,12 @@ exports.resendOtp = async (req, res, next) => {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'commutecare.noreply@gmail.com',
-          pass: 'tlvfjxrfdyxluiys'
+          user: 'assisttrack.noreply@gmail.com',
+          pass: 'cpsbgckwrpepbhbj'
         }
       });
       const mailOptions = {
-        from: 'commutecare.noreply@gmail.com',
+        from: 'assisttrack.noreply@gmail.com',
         to: email,
         subject: 'Verify Your Email',
         text: `Your OTP is: ${otp}`

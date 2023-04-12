@@ -23,17 +23,17 @@ exports.deleteBooking = async (req, res, next) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "commutecare.noreply@gmail.com",
-        pass: "tlvfjxrfdyxluiys",
+        user: "assisttrack.noreply@gmail.com",
+        pass: "cpsbgckwrpepbhbj",
       },
     });
     
     const { firstname: username, email: useremail } = booking.user;
    
     const userMailOptions = {
-      from: 'commutecare.noreply@gmail.com',
+      from: 'assisttrack.noreply@gmail.com',
       to: useremail,
-      subject: 'CoomuteCare-Booking cancellation',
+      subject: 'assisttrack-Booking cancellation',
       html: ` Dear ${username}, 
 
 <p>We are sorry to hear that you have cancelled your booking with our helper. We understand that circumstances can change, and we appreciate you letting us know in advance.</p> 
