@@ -5,7 +5,7 @@ exports.deleteBooking = async (req, res, next) => {
     const bookingId = req.params.bookingId;
     const userId = req.userId;
   
-    const booking = await Booking.findById(bookingId).populate('user', 'firstname email').populate('helper','firstname email')
+    const booking = await Booking.findById(bookingId).populate('user', 'firstname email')
     ;
   
     if (!booking) {
@@ -29,7 +29,7 @@ exports.deleteBooking = async (req, res, next) => {
     });
     
     const { firstname: username, email: useremail } = booking.user;
-    const { firstname: helpername, email: helperemail } = booking.helper;
+   
     const userMailOptions = {
       from: 'commutecare.noreply@gmail.com',
       to: useremail,
@@ -44,22 +44,9 @@ exports.deleteBooking = async (req, res, next) => {
 CommuteCare Team,
       `
     };
-    const helperMailOptions = {
-      from: 'commutecare.noreply@gmail.com',
-      to: helperemail,
-      subject: 'CommuteCare-Booking cancellation',
-      html: ` Dear ${helpername}, 
-      
-<p>We regret to inform you that the booking for ${username} on ${booking.date} has been cancelled by the client. We apologize for any inconvenience this may cause you.</p>
-<p>If you have any questions or concerns, please do not hesitate to contact us by phone or email. We look forward to working with you in the future.</p>
-<p>Thank you for your understanding.</p>
-      
-<p>Best regards,</p>
-CommuteCare Team
-      `
-    };
+   
 
     await transporter.sendMail(userMailOptions);
-    await transporter.sendMail(helperMailOptions);
+
   };
   
