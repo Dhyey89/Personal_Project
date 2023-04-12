@@ -16,6 +16,7 @@ const resendOTPRoutes = require('./routes/resendOTPRoute');
 const additionalDetailsRoutes = require('./routes/additionalDetailsRoute.js')
 const getUserProfileRoutes= require('./routes/userProfileRoute.js')
 const getHelperProfileRoutes= require('./routes/helperProfileRoute.js')
+const getBookingRoutes = require('./routes/getBookingRoute');
 
 
 const app = express();
@@ -47,6 +48,7 @@ app.use('/', resendOTPRoutes);
 app.use('/', additionalDetailsRoutes);
 app.use('/', getUserProfileRoutes);
 app.use('/', getHelperProfileRoutes);
+app.use('/', getBookingRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);

@@ -56,7 +56,7 @@ const adminSchema = new Schema(
     },
     helperId:{
         type:Schema.Types.ObjectId,
-        ref:'helpers_'
+        ref:'admin'
     },
     description:{
       type: String,
