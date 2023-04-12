@@ -11,9 +11,6 @@ const SignupRoutes = require('./routes/SignupRoute');
 const forgotPasswordRoutes = require('./routes/forgotPasswordRoute');
 const resetPasswordRoutes = require('./routes/resetPasswordRoute');
 const deleteBookingRoutes = require('./routes/deleteBookingRoute');
-const verifyOTPRoutes = require('./routes/verifyOTPRoute');
-const resendOTPRoutes = require('./routes/resendOTPRoute');
-const additionalDetailsRoutes = require('./routes/additionalDetailsRoute.js')
 const getUserProfileRoutes= require('./routes/userProfileRoute.js')
 const getHelperProfileRoutes= require('./routes/helperProfileRoute.js')
 const getBookingRoutes = require('./routes/getBookingRoute');
@@ -43,9 +40,6 @@ app.use('/', SignupRoutes);
 app.use('/', forgotPasswordRoutes);
 app.use('/', resetPasswordRoutes);
 app.use('/', deleteBookingRoutes);
-app.use('/', verifyOTPRoutes);
-app.use('/', resendOTPRoutes);
-app.use('/', additionalDetailsRoutes);
 app.use('/', getUserProfileRoutes);
 app.use('/', getHelperProfileRoutes);
 app.use('/', getBookingRoutes);

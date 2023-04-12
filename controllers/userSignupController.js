@@ -37,42 +37,7 @@ exports.signup = async (req, res, next) => {
       email_verified: false
     });
     const savedUser = await user.save();
-
-    // Send OTP to user's email
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'commutecare.noreply@gmail.com',
-        pass: 'tlvfjxrfdyxluiys'
-      }
-    });
-    const mailOptions = {
-      from: 'commutecare.noreply@gmail.com',
-      to: email,
-      subject: 'CommuteCare - Verify your email',
-      html: `
-      <p>Dear Commuter,</p>
-
-      <p>Thank you for choosing CommuteCare which focuses on providing assistance tailored to your requirement. We value your interest and appreciate the trust you have placed in us.</p>
-      
-      <p>To complete the email verification process, we are sending you a One-Time Password (OTP) to the email address you have provided.</p>
-            
-      <p>Your OTP is: <strong style="font-size: 13px;">${OTP}</strong><p>
-            
-      <p>Please note that this OTP is only valid for a limited time, so we recommend that you complete the verification process as soon as possible.</p>
-            
-      <p>If you did not request this verification or believe this email was sent in error, please disregard this message.</p>
-            
-      <p>Thank you for your cooperation in this matter. We look forward to serving you.</p>
-            
-      <p>Best regards,</p>
-      <p>CommuteCare Team</p>`
-    };
-    await transporter.sendMail(mailOptions);
-
-    // Store OTP in cache
-    cache.set(email, OTP);
-
+    
     // Create JWT for user
     const token = jwt.sign({ 
       userId: savedUser._id, 
@@ -80,7 +45,7 @@ exports.signup = async (req, res, next) => {
     }, 'somesupersecretsecret', { expiresIn: '1h' });
 
     res.status(201).json({ 
-      message: 'User created! OTP sent to email.', 
+      message: 'User created!', 
       token: token 
     });
   } catch (err) {

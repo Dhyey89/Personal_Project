@@ -32,12 +32,25 @@ exports.getAvailableTimeSlots = async (req, res, next) => {
     }
 
   // Filter out the booked time slots
-  const availableTimeSlots = timeSlots.filter(slot => {
-    const bookingTime = moment(slot, "h:mm a");
-    const bookedSlots = existingBookings.filter(booking => moment(booking.starttime).isSame(bookingTime));
-    const bookedSlotsBySameUser = existingUserBookings.filter(booking => moment(booking.starttime).isSame(bookingTime));
-    return bookedSlots.length < 2 && bookedSlotsBySameUser.length === 0; // Only include slots booked by other users
-  });
+// Filter out the booked time slots
+const availableTimeSlots = timeSlots.filter(slot => {
+  const bookingTime = moment(slot, "h:mm a");
+  const bookedSlots = existingBookings.filter(booking => moment(booking.starttime).isSame(bookingTime));
+  const bookedSlotsBySameUser = existingUserBookings.filter(booking => moment(booking.starttime).isSame(bookingTime));
+
+  // Exclude time slots that are booked by two different users
+  if (bookedSlots.length >= 2) {
+    return false;
+  }
+
+  // Exclude time slots that are booked by the same user
+  if (bookedSlotsBySameUser.length > 0) {
+    return false;
+  }
+
+  return true;
+});
+
 
   // Return the available time slots
   return res.status(200).send({ availableTimeSlots: availableTimeSlots });
