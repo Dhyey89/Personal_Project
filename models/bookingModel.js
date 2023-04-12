@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema(
   {
-    day: {
-      type: String,
-      required: true
-    },
+   
     date:{
       type:String,
       
