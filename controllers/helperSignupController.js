@@ -32,22 +32,7 @@ exports.signup = async (req, res, next) => {
       // lastname: lastname,
       email: email,
       password: hashedPw,
-      dob: "",
-      mob: "",
-      gender: "",
-      age: 0,
-      helped: 0,
-      description: "",
-      availability: {
-        Monday: "",
-        Tuesday: "",
-        Wednesday: "",
-        Thursday: "",
-        Friday: "",
-        Saturday: "",
-        Sunday: "",
-      },
-      bookings: [],
+      
     });
     const savedHelper = await helper.save();
     cache.set(email, OTP);

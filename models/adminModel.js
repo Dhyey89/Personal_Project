@@ -3,13 +3,7 @@ const Schema = mongoose.Schema;
 
 const adminSchema = new Schema(
   {
-    firstname:{
-        type: String,
-    },
-      lastname:{
-      type: String,
-      
-    },
+    
     password:{
         type:String,
        
@@ -18,14 +12,7 @@ const adminSchema = new Schema(
       type: String,
       required: true
     },
- perId:{
-        type:Schema.Types.ObjectId,
-        ref:'admin'
-    },
-  bookings: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Booking'
-  }]
+
   },
   { timestamps: true }
 );
