@@ -15,7 +15,7 @@ exports.createBooking = async (req, res, next) => {
   const existingUserTimeSlotBooking = await Booking.findOne({
     user: user,
     date: date,
-    starttime: moment(timeSlot, 'h:mm a').toDate(),
+    starttime: timeSlot
   });
 
   if (existingUserTimeSlotBooking) {
@@ -37,7 +37,7 @@ exports.createBooking = async (req, res, next) => {
   const existingBookings = await Booking.find({
     date: date,
     location: location,
-    starttime: moment(timeSlot, 'h:mm a').toDate(),
+    starttime: timeSlot
   });
 
   if (existingBookings.length >= 2) {
@@ -49,7 +49,7 @@ exports.createBooking = async (req, res, next) => {
     user: user,
     date: date,
     location: location,
-    starttime: moment(timeSlot, 'h:mm a').toDate(),
+    starttime: timeSlot
   });
 
   try {
