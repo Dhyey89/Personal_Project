@@ -8,7 +8,7 @@ const Booking = require("../models/bookingModel");
 exports.getAvailableTimeSlots = async (req, res, next) => {
   const date = req.query.date;
   const location = req.query.location;
-  const timeSlots = ["9:00 am", "9:30 am", "10:00 am", "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm"];
+  const timeSlots = ["09:00 am", "09:30 am", "10:00 am", "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "01:00 pm", "01:30 pm", "02:00 pm", "02:30 pm", "03:00 pm", "03:30 pm", "04:00 pm", "04:30 pm"];
  
 
   // Check if there are any existing bookings for the current date and time slots
