@@ -16,29 +16,18 @@ const userSchema = new Schema({
   lastname: {
     type: String,
   },
-  dob: {
-    type: String, 
-  },
-  gender:{
-    type:String,
-  },
   profilePhotoUrl:{
     type:String
   },
   mob:{
     type:String,
   },
-  profilePhotoUrl:{
-    type:String
-  },
+ 
   userId:{
     type:Schema.Types.ObjectId,
     ref : 'User'
   },
-  email_verified: {
-    type: Boolean,
-    default: false
-  },
+
   bookings: [{
     type: Schema.Types.ObjectId
   

@@ -11,7 +11,17 @@ exports.createBooking = async (req, res, next) => {
   const location = req.body.location;
   const timeSlot = req.body.timeSlot;
   const user = req.userId; // Assuming you have the user ID available in the request
+ 
+  const existingUserTimeSlotBooking = await Booking.findOne({
+    user: user,
+    date: date,
+    starttime: moment(timeSlot, 'h:mm a').toDate(),
+  });
 
+  if (existingUserTimeSlotBooking) {
+    // If the user has already booked the same time slot, return an error response
+    return res.status(400).send({ message: 'You have already booked the same time slot.' });
+  }
   // Check if the user has already booked the maximum number of time slots
   const existingUserBookings = await Booking.find({
     user: user,
