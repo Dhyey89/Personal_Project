@@ -3,7 +3,7 @@ const Booking = require("../models/bookingModel");
 
 exports.deleteBooking = async (req, res, next) => {
     const bookingId = req.params.bookingId;
-    const user = req.userId;
+    const userId = req.userId;
   
     const booking = await Booking.findById(bookingId).populate('user', 'firstname email')
     ;
