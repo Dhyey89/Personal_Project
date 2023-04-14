@@ -12,6 +12,8 @@ exports.signup = async (req, res, next) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
+    const firstname=req.body.firstname;
+    const lastname=req.body.lastname;
     
     const existingHelper = await Helper.findOne({ email: email });
     const existingUser = await User.findOne({ email: email });
@@ -34,7 +36,8 @@ exports.signup = async (req, res, next) => {
     const user = new User({
       email: email,
       password: hashedPw,
-      email_verified: false
+      firstname:firstname,
+      lastname:lastname,
     });
     const savedUser = await user.save();
     

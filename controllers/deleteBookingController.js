@@ -3,7 +3,7 @@ const Booking = require("../models/bookingModel");
 
 exports.deleteBooking = async (req, res, next) => {
     const bookingId = req.params.bookingId;
-    const userId = req.userId;
+    const user = req.userId;
   
     const booking = await Booking.findById(bookingId).populate('user', 'firstname email')
     ;
@@ -41,7 +41,7 @@ exports.deleteBooking = async (req, res, next) => {
 <p>Thank you for choosing CommuteCare. If you have any questions or concerns, please do not hesitate to contact us by phone or email.</p>
       
 <p>Best regards,</p>
-CommuteCare Team,
+Assisttrack Team,
       `
     };
    
