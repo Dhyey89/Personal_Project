@@ -44,12 +44,14 @@ exports.createBooking = async (req, res, next) => {
     // If the selected time slot is already booked by 2 users, return an error response
     return res.status(400).send({ message: 'The selected time slot is not available.' });
   }
-
+  const startTime = moment(timeSlot, 'h:mm a');
+  const endTime = startTime.clone().add(30, 'minutes').format('h:mm a');
   const newBooking = new Booking({
     user: user,
     date: date,
     location: location,
-    starttime: timeSlot
+    starttime: timeSlot,
+    endtime : endTime
   });
 
   try {

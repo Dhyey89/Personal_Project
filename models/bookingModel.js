@@ -25,6 +25,9 @@ const bookingSchema = new Schema(
     },
     starttime:{
       type:String
+    },
+    endtime:{
+      type:String
     }
   },
   { timestamps: true }
